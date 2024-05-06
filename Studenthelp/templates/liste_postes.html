@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Liste des Postes</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    text-align: center;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  .post-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button a {
+    color: #fff;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+ <h1>Liste des Postes</h1>
+ <button><a href="creer_post">Ajouter</a></button>
+ <ul>
+ {% for post in postes %}
+ <li class="post-container">
+   <a href="{% url 'detail_post' post.pk %}">{{ post.type }}</a>
+   
+ </li>
+ {% include 'Studenthelp/profil/detail_post.html'%}
+ {% endfor %}
+ </ul>
+</body>
+</html>

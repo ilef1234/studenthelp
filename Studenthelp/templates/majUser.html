@@ -1,0 +1,128 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Onix Digital Marketing HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/templatemo-onix-digital.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/owl.css' %}">
+</head>
+
+<body>
+
+    <div id="contact" class="contact-us section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="left-image">
+                  <img src="{% static 'Studenthelp/images/about-left-image.png' %}" alt="Two Girls working together">
+                </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+              <form role="form" id="contact" method="Post">
+                <div class="row">
+                        {% csrf_token %}
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_nom"></label>
+                                <input class="form-control" type="text" name="nom" placeholder="Nom" maxlength="100" required="" id="id_nom">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_prenom"></label>
+                                <input class="form-control" type="text" name="prenom" placeholder="Prenom" maxlength="100" required="" id="id_prenom">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_telephone"></label>
+                                <input class="form-control" type="text" name="telephone" placeholder="Téléphone" maxlength="10" required="" id="id_telephone">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_email"></label>
+                                <input class="form-control" type="email" name="email" placeholder="Addresse Email" maxlength="254" required="" id="id_email">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_password"></label>
+                                <input class="form-control" type="password" name="password" placeholder="Mot de passe" maxlength="254" required="" id="id_password">
+
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-button">Inscription</button>
+                            </fieldset>
+                        </div>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-lg-5 align-self-center">
+                <form role="form" method="post">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_nom"></label>
+                                <input class="form-control" type="text" name="nom" value="Nom" maxlength="100" required="" id="id_nom">
+                            </fieldset>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <label for="id_email"></label>
+                                <input class="form-control" type="email" name="email" value="Addresse Email" maxlength="254" required="" id="id_email">
+                            </fieldset>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <fieldset>
+                                <button type="submit" id="form-submit" class="main-button">Enregistrer</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'Studenthelp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/animation.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/imagesloaded.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/custom.js' %}"></script>
+
+</body>
+</html>
+{% endblock %}

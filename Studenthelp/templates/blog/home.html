@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="{% url 'profil' %}">
+        bb
+    
+
+        {% for post in poste %}
+      
+              
+                <a href="{{ post.user.username }}" class="post__user"><h3>{{ post.user }}</h3></a>
+
+             
+                
+
+
+
+
+                
+           
+        
+           {{ post.affichertype }}
+        
+           
+                <img src="{{ post.image.url }}" alt="Post Image" class="post__image">
+          
+                 
+                  {% for rec in post.reactions.all %}
+                
+           
+                  {% if rec.like %}
+                  {{ post.count_likes }} 
+                  {% else %} Not Liked
+                  {% endif %}
+            
+                
+            
+                            <span class="comment__user">{{ rec.user }}</span> :
+                            <span class="comment__text">{{ rec.comment }}</span>
+
+{% endfor %}
+
+
+                    <span class="post__date-time">{{ post.date }}</span>
+      
+        {% endfor %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du poste</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .post-details {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .post-details p {
+            margin: 10px 0;
+        }
+        .post-details img {
+            display: block;
+            margin: 10px auto;
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-details">
+        <h1>Détails du poste : {{ post.type }}</h1>
+        <p>date : {{ post.date }}</p>
+        <p>user : {{ post.user }}</p>
+        <img src="/media/{{ post.image }}" alt="Profile Pic" height="auto" width="100%" />
+        <button><a href="{% url 'modifier_post' post.pk %}">modifier</a></button>
+   <button><a href="{% url 'supprimer_post' post.pk %}">supprimer</a></button>
+    </div>
+</body>
+</html>
