@@ -107,7 +107,7 @@ def poste(request):
         form = PosteForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majPoste.html', {'form': form})
+    return render(request, 'majPoste.html', {'form': form})
 def evenement(request):
     if request.method == "POST": 
         form = EvenementForm(request.POST, request.FILES)
@@ -118,7 +118,7 @@ def evenement(request):
         form = EvenementForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvenement.html', {'form': form})
+    return render(request, 'majEvenement.html', {'form': form})
 def evenementclub(request):
     if request.method == "POST": 
         form = EvenClubForm(request.POST, request.FILES)
@@ -129,7 +129,7 @@ def evenementclub(request):
         form = EvenClubForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvenclub.html', {'form': form})
+    return render(request, 'majEvenclub.html', {'form': form})
 def evenementsoc(request):
     if request.method == "POST": 
         form = EvenSocialForm(request.POST, request.FILES)
@@ -140,7 +140,7 @@ def evenementsoc(request):
         form = EvenSocialForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvensoc.html', {'form': form})
+    return render(request, 'majEvensoc.html', {'form': form})
 def stage(request):
     if request.method == "POST": 
         form = StageForm(request.POST, request.FILES)
@@ -151,7 +151,7 @@ def stage(request):
         form = StageForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majStage.html', {'form': form})
+    return render(request, 'majStage.html', {'form': form})
 def logement(request):
     if request.method == "POST": 
         form = LogementForm(request.POST, request.FILES)
@@ -162,7 +162,7 @@ def logement(request):
         form = LogementForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majLog.html', {'form': form})
+    return render(request, 'majLog.html', {'form': form})
 def transport(request):
     if request.method == "POST": 
         form = TransportForm(request.POST, request.FILES)
@@ -173,7 +173,7 @@ def transport(request):
         form = TransportForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majTransp.html', {'form': form})
+    return render(request, 'majTransp.html', {'form': form})
 
 def recommandation(request):
     if request.method == "POST": 
@@ -185,7 +185,7 @@ def recommandation(request):
         form = RecommandationForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majRec.html', {'form': form})
+    return render(request, 'majRec.html', {'form': form})
 
 def accueil(request):
     postes = Poste.objects.all()
@@ -282,10 +282,37 @@ class ModifierPost(UpdateView):
     template_name = 'modifier_post.html'
     form_class = PosteForm 
     success_url = reverse_lazy('profil') 
+    # class ModifierPost(UpdateView):
+    # model = Poste
+    # template_name = 'modifier_post.html'
+    # form_class = PosteForm 
+
+    # # Redirection conditionnelle
+    # def get_success_url(self):
+    #     # Vérifie si la page précédente est le profil
+    #     if self.request.META.get('HTTP_REFERER') == reverse_lazy('profil'):
+    #         return reverse_lazy('profil')
+    #     # Sinon, redirige vers l'accueil
+    #     return reverse_lazy('accueil')
+
 class SupprimerPost(DeleteView):
     model = Poste
     template_name = 'supprimer_post.html'
     success_url = reverse_lazy('profil') 
+# class SupprimerPost(DeleteView):
+#     model = Poste
+#     template_name = 'supprimer_post.html'
 
+#     # Redirection conditionnelle
+#     def get_success_url(self):
+#         # Vérifie si la page précédente est le profil
+#         if self.request.META.get('HTTP_REFERER') == reverse_lazy('profil'):
+#             return reverse_lazy('profil')
+#         # Sinon, redirige vers l'accueil
+#         return reverse_lazy('accueil')
 
+def choix(request):
+    return render(request, 'choix.html')
+def contact(request):
+    return render(request,'contact.html')
     

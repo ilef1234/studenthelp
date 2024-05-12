@@ -28,6 +28,77 @@
  
   
 }
+.post-content {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.interactions {
+    margin-top: 10px;
+}
+
+.comments {
+    margin-top: 20px;
+}
+.btn-like {
+    background-color: transparent;
+    color: #dc3545; /* Couleur rouge */
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.btn-like:hover {
+    color: #bf2c38; /* Couleur rouge plus foncée au survol */
+}
+
+.like-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.footer {
+    position: relative;
+    /* Ajoutez d'autres styles de mise en page de votre pied de page */
+}
+
+.details-link-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+
+.details-link {
+    padding: 10px 20px;
+    background-color: #d0d7d1;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.details-link:hover {
+    background-color: #ff2f00; /* Orange clair */
+    color: #ffffff; /* Blanc */}
+
+
 </style>
   <body>
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
@@ -48,8 +119,20 @@
                     </svg>Accueil
                   </a>
                 </li>
+                {% comment %} <li class="scroll-to-section nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="/Studenthelp/choix">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                    </svg>choix
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li> {% endcomment %}
                 <li class="scroll-to-section">
-                  <a href="#services">
+                  <a href="/Studenthelp/choix">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                     </svg>Services
@@ -81,7 +164,7 @@
                 </li>
                 <li class="scroll-to-section">
                   <div class="main-red-button-hover">
-                    <a href="#contact">Contact Us Now</a>
+                    <a href="/Studenthelp/contact">Contact Us Now</a>
                   </div>
                 </li>
               </ul>
@@ -103,39 +186,65 @@
               </div>
           {% else %}
           {% for post in postes %}
-
-                  <div class="row">
-                      <div class="col-lg-3">
-                      </div>
-                      
-                      <div class="col-lg-6">
-                          <div class="item second-item">
-                              
-                              <div class="post-content">
-                                  <a href="{{ post.user }}" class="user-link"></a>
-                
-                                  <p>{{ post.affichertype }}</p>
-                                  <img src="{{ post.image.url }}"  class="rounded float-start post-image" height="200px" width="200px" alt="Post Image">     
-                                  <p>{{ post.date }}</p>                       
-                                  <p>{{ post.user }}</p>
-                                  {% for reaction in item.reaction_set.all %}
-                                      {% if reaction.like %}
-                                          <p>Liked</p>
-                                      {% else %}
-                                          <p>Not Liked</p> 
-                                      {% endif %}
-                                      <p>{{ reaction.comment }}</p>
-                                  {% endfor %}
-                              </div>
+          <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                  <div class="item second-item">
+                      <div class="post-content">
+                          <div class="user-info">
+                            
+                              <a href="{{ post.user }}" class="user-link">{{ post.user }}</a>
                           </div>
-                      </div>
-                      <div class="col-lg-3">
+                          <div class="type">
+                              <p>{{ post.affichertype }}</p>
+                          </div>
+                          <div class="post-details">
+                              {% if post.image %}
+                                  <img src="{{ post.image.url }}" class="rounded float-start post-image" height="200px" width="200px" alt="Post Image">
+                              {% endif %}
+                          </div>
+                          <div class="date">
+                              <p>{{ post.date }}</p>
+                          </div>
+                          <div class="interactions">
+                              <a href="#" class="btn btn-sm btn-like like-btn" data-post-id="{{ post.id }}">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="like-icon feather feather-heart feather-sm">
+                                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                  </svg> 
+                                  <span class="like-count">{{ post.count_likes }}</span> Like
+                              </a>
+                          </div>
+                          <div class="comments">
+                              {% for rec in post.reactions.all %}
+                                  <div class="media mt-3">
+                                      <a class="pr-2" href="#">
+                                          <img src="/static/images/ilef.png" width="36" height="36" class="rounded-circle mr-2" alt="Marie Salter">
+                                      </a>
+                                      <div class="media-body">
+                                          <p class="text-muted">
+                                              <strong>{{ rec.comment }}</strong>
+                                          </p>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                          <div class="footer">
+                            <div class="details-link-container">
+                                <a class="details-link" href="{% url 'detail_post' pk=post.pk %}">Voir les détails</a>
+                            </div>
+                        </div>
+                        
                       </div>
                   </div>
-              {% endfor %}
+              </div>
+              <div class="col-lg-3"></div>
+          </div>
+      {% endfor %}
+      
           {% endif %} 
       </div>
   </div>
   
   </body>
+  
 </html>

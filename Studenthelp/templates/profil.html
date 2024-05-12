@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <title>Onix Digital Marketing HTML5 Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -272,7 +273,71 @@ body{
   
 }
 
-}</style>
+}
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 5px 20px 5px 5px; /* Ajustez les marges pour l'espacement */
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.select-wrapper::after {
+  content: '\22EE'; /* Utilisation du caractère "..." */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Style du dropdown */
+.select-wrapper select:focus {
+  outline: none;
+}
+
+/* Style des options */
+.select-wrapper select option {
+  background-color: #fff; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+}
+
+/* Style au survol des options */
+.select-wrapper select option:hover {
+  background-color: #f5f5f5; /* Couleur de fond au survol */
+}
+.creer-link-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+
+.creer-link {
+    padding: 10px 20px;
+    background-color: #ff1e00db;
+    color: #fff;
+    text-decoration: none;
+
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-radius: 20px; /* pour rendre les coins arrondis */
+}
+
+.creer-link:hover {
+    background-color: #ff1e00db; /* Orange clair */
+    color: #ffffff; /* Blanc */
+}
+
+</style>
 <body>
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
         <div class="container">
@@ -293,7 +358,7 @@ body{
                     </a>
                   </li>
                   <li class="scroll-to-section">
-                    <a href="#services">
+                    <a href="/Studenthelp/choix">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                       </svg>Services
@@ -325,7 +390,7 @@ body{
                   </li>
                   <li class="scroll-to-section">
                     <div class="main-red-button-hover">
-                      <a href="#contact">Contact Us Now</a>
+                      <a href="/Studenthelp/contact">Contact Us Now</a>
                     </div>
                   </li>
                 </ul>
@@ -346,11 +411,9 @@ body{
                         <h4 class="card-title mb-0">{{ user_nom }}</h4>  
     
                 
-                      
                         <div>
-                            <a class="btn btn-primary" href="{% url 'creer_post' %}">Créer un poste</a>
+                            <a class="creer-link btn btn-primary" href="{% url 'creer_post' %}">Créer une poste</a>
                         </div>
-                        
                     </div>
                 </div>
                 <div class="card mb-3">
@@ -359,7 +422,7 @@ body{
                             <div class="dropdown show">
                                 <a href="#" data-toggle="dropdown" data-display="static">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
-                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="12" cy="12" r="1">AA</circle>
                                         <circle cx="19" cy="12" r="1"></circle>
                                         <circle cx="5" cy="12" r="1"></circle>
                                     </svg>
@@ -430,6 +493,17 @@ body{
                         {% for post in poste %}
                         <div class="media">
                             <div class="media-body">
+                                 
+                                    <div class="card-actions float-right">
+                                        <div class="select-wrapper">
+                                            <select class="form-control" onchange="location.href=this.value">
+                                                <option selected></option>
+                                                <option value="{% url 'modifier_post' pk=post.pk %}">Modifier</option>
+                                                <option value="{% url 'supprimer_post' post.pk %}">Supprimer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                               
                                 <p class="mb-2"><strong>{{ post.user.nom }}</strong></p>
                                 <p>{{ post.affichertype }}</p>
                                 <div class="row no-gutters mt-1">
@@ -462,12 +536,7 @@ body{
                                 </div>
                               
                                 {% endfor %}
-                                <div class="card-footer">
-                                   
-                                    <a class="btn btn-info" href="{% url 'modifier_post' pk=post.pk %}">Modifier le poste</a>
-
-                                    <a class="btn btn-danger" href="{% url 'supprimer_post' post.pk %}">Supprimer le poste</a>
-                                </div>
+                              
             <!-- Lien pour créer un nouveau poste -->
 
 
@@ -486,14 +555,28 @@ body{
         </div>
     
 </body>
+<script>
+    function toggleOptions() {
+        var options = document.querySelector('.options');
+        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    document.getElementById('select-button').addEventListener('click', toggleOptions);
+</script>
+<!-- Vous n'avez pas besoin de ces deux lignes, car vous avez déjà inclus la version 5.3.0-alpha1 de Bootstrap -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-vuFJQ5GGdSvpr6no9V+oYkwqTNZy9sQGpMXXnqzTq9RK8oQpX/bzXyJb+kzKCUfE" crossorigin="anonymous"></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js'></script> -->
 
-
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js'></script>
-<!-- Scripts -->
+<!-- Vous avez besoin de jQuery pour que Bootstrap fonctionne correctement -->
 <script src="{% static 'Studenthelp/vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Vous avez déjà inclus le fichier JavaScript de Bootstrap -->
+<!-- <script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+
+<!-- Les autres scripts semblent spécifiques à votre application -->
 <script src="{% static 'Studenthelp/js/owl-carousel.js' %}"></script>
 <script src="{% static 'Studenthelp/js/animation.js' %}"></script>
 <script src="{% static 'Studenthelp/js/imagesloaded.js' %}"></script>
 <script src="{% static 'Studenthelp/js/custom.js' %}"></script>
+
 </html>

@@ -35,8 +35,7 @@
         <p>date : {{ post.date }}</p>
         <p>user : {{ post.user }}</p>
         <img src="/media/{{ post.image }}" alt="Profile Pic" height="auto" width="100%" />
-        <button><a href="{% url 'modifier_post' post.pk %}">modifier</a></button>
-   <button><a href="{% url 'supprimer_post' post.pk %}">supprimer</a></button>
+      
     </div>
 </body>
 </html>

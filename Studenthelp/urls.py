@@ -24,6 +24,8 @@ urlpatterns = [
    path('modifier_post/<int:pk>/', ModifierPost.as_view(), name='modifier_post'),
 
     path('supprimer_post/<int:pk>/', SupprimerPost.as_view(), name='supprimer_post'),
+    path('choix/', views.choix, name="choix"),
+    path('contact/', views.contact, name="contact"),
 ]
 
 # Définir l'URL pour les fichiers média en mode DEBUG

@@ -1,10 +1,111 @@
+{% load static %}
 {% block content %}
-<div class="col-md-12 text-center">
-    <h2>Manip evenement club ...... </h2>
-</div>
-<form method="POST" class="post-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-default">Enregistrer</button>
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Onix Digital Marketing HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/templatemo-onix-digital.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/owl.css' %}">
+</head>
+<style>
+    .custom-col {
+        width: 50%; /* Reduit la largeur */
+        height: 50%; /* Reduit la hauteur */
+    }
+</style>
+
+<body>
+
+    <div id="contact" class="contact-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="left-image">
+                        <img src="{% static 'Studenthelp/images/about-left-image.png' %}" alt="Two Girls working together">
+                    </div>
+                </div>
+                <div class="col-lg-5 align-self-center">
+                    <form role="form" id="contact" method="Post">
+                        <div class="row">
+                            {% csrf_token %}
+                            <div class="col-lg-12">
+<br>
+                            </div>
+                            <div class="col-lg-12">
+                                    <input class="form-control" type="file" name="image" accept="image/*" id="id_image" placeholder="Image">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <select class="form-control" name="type" id="id_type" placeholder="Type">
+                                        <option value="0" selected="">offre</option>
+                                        <option value="1">demande</option>
+                                    </select>
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <input class="form-control" type="text" name="date" value="2024-05-10" required="" id="id_date" placeholder="Date">
+                                    <input type="hidden" name="initial-date" value="2024-05-10" id="initial-id_date">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <select class="form-control" name="user" required="" id="id_user" placeholder="User">
+                                        <option value="" selected="" disabled>----User----</option>
+                                        <option value="1">Mahmoud</option>
+                                        <option value="7">hassen</option>
+                                        <option value="8">ilef</option>
+                                        <option value="10">mokhtar</option>
+                                        <option value="11">baya</option>
+                                        <option value="12">ali</option>
+                                        <option value="14">mohamed</option>
+                                    </select>
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <input class="form-control" type="text" name="intitule" maxlength="100" required="" id="id_intitule" placeholder="Intitule">
+
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <input class="form-control" type="text" name="description" maxlength="100" required="" id="id_description" placeholder="Description">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <input class="form-control" type="text" name="lieu" required="" id="id_lieu" placeholder="Lieu">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <input class="form-control" type="text" name="contactinfo" maxlength="100" required="" id="id_contactinfo" placeholder="Informations de contact">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                <input class="form-control" type="text" name="club" required="" id="id_club" placeholder="Club">
+                            </div>
+                            <div class="col-lg-12 custom-col">
+                                    <button type="submit" class="main-button">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'Studenthelp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/animation.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/imagesloaded.js' %}"></script>
+    <script src="{% static 'Studenthelp/js/custom.js' %}"></script>
+
+</body>
+
+</html>
 {% endblock %}

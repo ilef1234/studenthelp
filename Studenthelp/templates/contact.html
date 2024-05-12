@@ -1,0 +1,178 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Onix Digital Marketing HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/fontawesome.css'%}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/templatemo-onix-digital.css'%}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/animated.css'%}">
+    <link rel="stylesheet" href="{% static 'Studenthelp/css/owl.css'%}">
+<!--
+
+TemplateMo 565 Onix Digital
+
+https://templatemo.com/tm-565-onix-digital
+
+-->
+  </head>
+  <style>
+    .rounded-logo {
+ width: 94px; /* Largeur de l'image */
+ height: 44px; /* Hauteur de l'image */
+ border-radius: 50%; /* Pour rendre l'image circulaire */
+
+ 
+}
+</style>
+<body>
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="main-nav">
+                <!-- ***** Logo Start ***** -->
+                <a href="index.html" class="logo" ><img src="/static/images/iset.jpg" class="rounded-logo" /></a>
+  
+                <!-- ***** Logo End ***** -->
+                <!-- ***** Menu Start ***** -->
+                <ul class="nav">
+                  <li class="scroll-to-section">
+                    <a href="/Studenthelp/accueil">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                      </svg>Accueil
+                    </a>
+                  </li>
+                  {% comment %} <li class="scroll-to-section nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/Studenthelp/choix">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                      </svg>choix
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </li> {% endcomment %}
+                  <li class="scroll-to-section">
+                    <a href="/Studenthelp/choix">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                      </svg>Services
+                    </a>
+                  </li>
+                  <li class="scroll-to-section">
+                    <a href="#about">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
+                      </svg>Notification
+                    </a>
+                  </li>
+                  <li class="scroll-to-section">
+                    <a href="#portfolio">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                          <path d="M19 3h-1V2h-2v1H8V2H6v1H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 20v-3h8v3zm10-3h-2V9h2v8z"/>
+                          <path fill="none" d="M0 0h24v24H0z"/>
+                      </svg>
+                      Reservation
+                    </a>
+                  </li>
+                  <li class="scroll-to-section">
+                    <a href="/Studenthelp/profil">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                      </svg>Profile
+                    </a>
+                  </li>
+                  <li class="scroll-to-section">
+                    
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div id="contact" class="contact-us section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="section-heading">
+                <h2>Contactez-nous<em> facilement</em> via notre <span>formulaire dédié</span></h2>
+                <div id="map">
+                  <iframe src="https://www.google.com/maps/place/ISET+Sfax/@34.757215,10.7672841,17z/data=!3m1!4b1!4m6!3m5!1s0x1301d2c1f3c2991f:0xab7f8817c80e9617!8m2!3d34.7572107!4d10.772155!16s%2Fg%2F1v0bvvtp?entry=ttu" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                </div>
+                <div class="info">
+                  <span><i class="fa fa-phone"></i> <a href="#">216-200-1004<br>216-2200-1004</a></span>
+                  <span><i class="fa fa-envelope"></i> <a href="#">iset@contact.tn<br>iset@sfax.com</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+              <form id="contact" action="" method="get">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <input type="name" name="name" id="name" placeholder="Nom" autocomplete="on" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <input type="surname" name="surname" id="surname" placeholder="Prenom" autocomplete="on" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <input type="text" name="website" id="website" placeholder="Votre réclamation" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button">Valider</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% comment %} <div class="contact-dec">
+            <img src="{% static 'Studenthelp/images/contact-dec.png' %}" alt="">
+        </div>
+        <div class="contact-left-dec">
+            <img src="{% static 'Studenthelp/images/contact-left-dec.png' %}" alt="">
+        </div> {% endcomment %}
+      </div>
+
+      <!-- Scripts -->
+  <script src="{% static 'Studenthelp/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'Studenthelp/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'Studenthelp/js/animation.js' %}"></script>
+  <script src="{% static 'Studenthelp/js/imagesloaded.js' %}"></script>
+  <script src="{% static 'Studenthelp/js/custom.js' %}"></script>
+</body>
+
+</html>
