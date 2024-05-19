@@ -51,3 +51,8 @@ class RecommandationForm(ModelForm):
     class Meta:
         model= Recommandation
         fields = "__all__"
+
+class CommentForm(ModelForm) :
+    class Meta :
+        model = Reaction
+        fields = "__all__"

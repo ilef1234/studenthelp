@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <title>Onix Digital Marketing HTML5 Template</title>
+    <title>Studenthelp</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -19,16 +19,123 @@
     <link rel="stylesheet" href="{% static 'Studenthelp/css/templatemo-onix-digital.css' %}" />
     <link rel="stylesheet" href="{% static 'Studenthelp/css/animated.css' %}" />
     <link rel="stylesheet" href="{% static 'Studenthelp/css/owl.css' %}" />
+    <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_0dcbad5a5544276d7713a9a16086de"></script>
   </head>
-<style>
-     .rounded-logo {
-  width: 94px; /* Largeur de l'image */
-  height: 44px; /* Hauteur de l'image */
-  border-radius: 50%; /* Pour rendre l'image circulaire */
- 
-  
-}
-</style>
+  <style>
+    .header-area {
+      background-color: #ffcc80; /* Orange clair pour l'arrière-plan de l'en-tête */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    }
+    .main-nav .nav a {
+      color: #ff9800; /* Orange pour les liens de navigation */
+      font-weight: bold;
+      padding: 10px 20px;
+      transition: color 0.3s ease;
+    }
+    .main-nav .nav a:hover {
+      color: #e68900; /* Orange foncé pour les liens au survol */
+    }
+   
+    .rounded-logo {
+      width: 94px; /* Largeur de l'image */
+      height: 44px; /* Hauteur de l'image */
+      border-radius: 50%; /* Pour rendre l'image circulaire */
+    }
+    .post-content {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .post-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .interactions {
+      margin-top: 10px;
+    }
+    
+    .comments {
+      margin-top: 20px;
+    }
+    .btn-like {
+      background-color: transparent;
+      color: #dc3545; /* Couleur rouge */
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+    }
+    
+    .btn-like:hover {
+      color: #bf2c38; /* Couleur rouge plus foncée au survol */
+    }
+    
+    .like-icon {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .footer {
+      position: relative;
+      /* Ajoutez d'autres styles de mise en page de votre pied de page */
+    }
+    
+    .details-link-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 10px;
+    }
+    
+    .details-link {
+      padding: 10px 20px;
+      background-color: #d0d7d1;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .details-link:hover {
+      background-color: #ff2f00; /* Orange clair */
+      color: #ffffff; /* Blanc */
+    }
+    .main-button {
+      font-size: small;
+      display: inline-block;
+      padding: 15px 35px;
+      background-color: #03a4ed;
+      color: #ffffff;
+      border-radius: 45px;
+      border: 1px solid: #03a4ed;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    .main-button-red {
+      font-size: small;
+      display: inline-block;
+      padding: 15px 35px;
+      background-color: #ff695f;
+      color: #ffffff;
+      border-radius: 45px;
+      border: 1px solid #ff695f;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      width: 100%;
+    }
+  </style>
   <body>
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
       <div class="container">
@@ -36,7 +143,7 @@
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="index.html" class="logo" ><img src="/static/images/iset.jpg" class="rounded-logo" /></a>
+              <a href="http://127.0.0.1:8000/Studenthelp/accueil/" class="logo"><img src="/static/images/iset.jpg" class="rounded-logo" /></a>
 
               <!-- ***** Logo End ***** -->
               <!-- ***** Menu Start ***** -->
@@ -48,27 +155,30 @@
                     </svg>Accueil
                   </a>
                 </li>
+                {% comment %} <li class="scroll-to-section nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="/Studenthelp/choix">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                    </svg>choix
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li> {% endcomment %}
                 <li class="scroll-to-section">
-                  <a href="#services">
+                  <a href="/Studenthelp/choix">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                     </svg>Services
                   </a>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#about">
+                  <a href="/all-posts">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
                       <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-                    </svg>Notification
-                  </a>
-                </li>
-                <li class="scroll-to-section">
-                  <a href="#portfolio">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M19 3h-1V2h-2v1H8V2H6v1H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 20v-3h8v3zm10-3h-2V9h2v8z"/>
-                        <path fill="none" d="M0 0h24v24H0z"/>
-                    </svg>
-                    Reservation
+                    </svg>Get All
                   </a>
                 </li>
                 <li class="scroll-to-section">
@@ -79,10 +189,17 @@
                     </svg>Profile
                   </a>
                 </li>
-                <li class="scroll-to-section">
-                  <div class="main-red-button-hover">
-                    <a href="#contact">Contact Us Now</a>
-                  </div>
+                <li>
+                  <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <button class="main-button-red" type="submit">Contactez-Nous</button>
+                  </form>
+                </li>
+                <li>
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="main-button" type="submit">logout</button>
+                  </form>
                 </li>
               </ul>
             </nav>
@@ -90,52 +207,63 @@
         </div>
       </div>
     </header>
-    <div class="post">
-      
-    </div>
-      
+    <div class="post"></div>
 
     <div id="pricing" class="pricing-tables">
       <div class="container">
-          {% if message %}
-              <div class="post-content">
-                  <p>{{ message }}</p>
-              </div>
-          {% else %}
+        {% if message %}
+          <div class="post-content">
+            <p>{{ message }}</p>
+          </div>
+        {% else %}
           {% for post in postes %}
-
-                  <div class="row">
-                      <div class="col-lg-3">
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                <div class="item second-item">
+                  <div class="post-content">
+                    <div class="user-info">
+                      <a href="{{ post.user }}" class="user-link">{{ post.user }}</a>
+                    </div>
+                    <div class="type">
+                      <p>{{ post.affichertype }}</p>
+                    </div>
+                    <div class="post-details">
+                      {% if post.image %}
+                        <img src="{{ post.image.url }}" class="rounded float-start post-image" height="200px" width="200px" alt="Post Image" />
+                      {% endif %}
+                    </div>
+                    <div class="date">
+                      <p>{{ post.date }}</p>
+                    </div>
+                    <div class="interactions">
+                      <div data-lyket-type="like" data-lyket-id="{{ post.id }}" data-lyket-namespace="blog" data-lyket-template="twitter"></div>
+                    </div>
+                    <div class="comments">
+                      <h5>Comments...</h5>
+                      {% if not post.comments.all %}
+                        <div class="ajc">No Comments</div>
+                        <a href="{% url 'add_comment' post.pk %}">Add comments</a>
+                      {% else %}
+                        {% for comment in post.comments.all %}
+                          <strong>{{ comment.comment }}</strong><br />
+                        {% endfor %}
+                        <a id="bb" href="{% url 'add_comment' post.pk %}">Add comments</a>
+                      {% endif %}
+                    </div>
+                    <div class="footer">
+                      <div class="details-link-container">
+                        <a class="details-link" href="{% url 'detail_post' pk=post.pk %}">Voir les détails</a>
                       </div>
-                      
-                      <div class="col-lg-6">
-                          <div class="item second-item">
-                              
-                              <div class="post-content">
-                                  <a href="{{ post.user }}" class="user-link"></a>
-                
-                                  <p>{{ post.affichertype }}</p>
-                                  <img src="{{ post.image.url }}"  class="rounded float-start post-image" height="200px" width="200px" alt="Post Image">     
-                                  <p>{{ post.date }}</p>                       
-                                  <p>{{ post.user }}</p>
-                                  {% for reaction in item.reaction_set.all %}
-                                      {% if reaction.like %}
-                                          <p>Liked</p>
-                                      {% else %}
-                                          <p>Not Liked</p> 
-                                      {% endif %}
-                                      <p>{{ reaction.comment }}</p>
-                                  {% endfor %}
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-3">
-                      </div>
+                    </div>
                   </div>
-              {% endfor %}
-          {% endif %} 
+                </div>
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
-  </div>
-  
+    </div>
   </body>
 </html>

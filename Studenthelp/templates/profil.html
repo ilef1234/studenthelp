@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <title>Onix Digital Marketing HTML5 Template</title>
+    <title>Studenthelp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'Studenthelp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
@@ -272,7 +273,106 @@ body{
   
 }
 
-}</style>
+}
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 5px 20px 5px 5px; /* Ajustez les marges pour l'espacement */
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.select-wrapper::after {
+  content: '\22EE'; /* Utilisation du caractère "..." */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Style du dropdown */
+.select-wrapper select:focus {
+  outline: none;
+}
+
+/* Style des options */
+.select-wrapper select option {
+  background-color: #fff; /* Couleur de fond */
+  color: #333; /* Couleur du texte */
+}
+
+/* Style au survol des options */
+.select-wrapper select option:hover {
+  background-color: #f5f5f5; /* Couleur de fond au survol */
+}
+.creer-link-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+
+.creer-link {
+    padding: 10px 20px;
+    background-color: #ff1e00db;
+    color: #fff;
+    text-decoration: none;
+
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-radius: 20px; /* pour rendre les coins arrondis */
+}
+
+.creer-link:hover {
+    background-color: #ff1e00db; /* Orange clair */
+    color: #ffffff; /* Blanc */
+}
+.main-button {
+    font-size: small;
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #03a4ed;
+    color: #ffffff;
+    border-radius: 45px;
+    border: 1px solid: #03a4ed;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+  }
+  .main-button-red {
+    font-size: small;
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #ff695f;
+    color: #ffffff;
+    border-radius: 45px;
+    border: 1px solid #ff695f;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100%;}
+    .header-area {
+        background-color: #ffcc80; /* Orange clair pour l'arrière-plan de l'en-tête */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+      }
+      .main-nav .nav a {
+        color: #ff9800; /* Orange pour les liens de navigation */
+        font-weight: bold;
+        padding: 10px 20px;
+        transition: color 0.3s ease;
+      }
+      .main-nav .nav a:hover {
+        color: #e68900; /* Orange foncé pour les liens au survol */
+      }
+</style>
 <body>
     <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
         <div class="container">
@@ -280,7 +380,7 @@ body{
             <div class="col-12">
               <nav class="main-nav">
                 <!-- ***** Logo Start ***** -->
-                <a href="index.html" class="logo" ><img src="/static/images/iset.jpg" class="rounded-logo" /></a>
+                <a href="http://127.0.0.1:8000/Studenthelp/accueil/" class="logo" ><img src="/static/images/iset.jpg" class="rounded-logo" /></a>
 
                 <!-- ***** Logo End ***** -->
                 <!-- ***** Menu Start ***** -->
@@ -293,26 +393,17 @@ body{
                     </a>
                   </li>
                   <li class="scroll-to-section">
-                    <a href="#services">
+                    <a href="/Studenthelp/choix">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
                       </svg>Services
                     </a>
                   </li>
                   <li class="scroll-to-section">
-                    <a href="#about">
+                    <a href="/all-posts">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
                         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901" />
-                      </svg>Notification
-                    </a>
-                  </li>
-                  <li class="scroll-to-section">
-                    <a href="#portfolio">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                          <path d="M19 3h-1V2h-2v1H8V2H6v1H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8 20v-3h8v3zm10-3h-2V9h2v8z"/>
-                          <path fill="none" d="M0 0h24v24H0z"/>
-                      </svg>
-                      Reservation
+                      </svg>Get All
                     </a>
                   </li>
                   <li class="scroll-to-section">
@@ -323,10 +414,17 @@ body{
                       </svg>Profile
                     </a>
                   </li>
-                  <li class="scroll-to-section">
-                    <div class="main-red-button-hover">
-                      <a href="#contact">Contact Us Now</a>
-                    </div>
+                  <li>
+                    <form method="post" action="{% url 'contact' %}">
+                      {% csrf_token %}
+                      <button class="main-button-red" type="submit">Contactez-nous</button>
+                    </form>
+                  </li>
+                  <li>
+                    <form method="post" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                      <button class="main-button" type="submit">logout</button>
+                    </form>
                   </li>
                 </ul>
               </nav>
@@ -340,17 +438,11 @@ body{
             <div class="col-lg-4">
                 <div class="card mb-3">
                     <div class="card-body text-center">
-                        <img src="/static/images/ilef.png"  class="img-fluid rounded-circle mb-2" width="128" height="128">
+                        <img src="/static/images/logo.jpg"  class="img-fluid rounded-circle mb-2" width="128" height="128">
                       
                        
                         <h4 class="card-title mb-0">{{ user_nom }}</h4>  
-    
-                
-                      
-                        <div>
-                            <a class="btn btn-primary" href="{% url 'creer_post' %}">Créer un poste</a>
-                        </div>
-                        
+
                     </div>
                 </div>
                 <div class="card mb-3">
@@ -359,7 +451,7 @@ body{
                             <div class="dropdown show">
                                 <a href="#" data-toggle="dropdown" data-display="static">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
-                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="12" cy="12" r="1">AA</circle>
                                         <circle cx="19" cy="12" r="1"></circle>
                                         <circle cx="5" cy="12" r="1"></circle>
                                     </svg>
@@ -380,46 +472,19 @@ body{
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home feather-sm mr-1">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg> Lives in <a href="#">San Francisco, SA</a></li>
+                                </svg> habiter à  :<a href="#">  Sfax</a></li>
                             <li class="mb-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase feather-sm mr-1">
                                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
                                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                </svg> Works at <a href="#">GitHub</a></li>
+                                </svg> Etudier à  : <a href="#">   ISET</a></li>
                               
-                            <li class="mb-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin feather-sm mr-1">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg> From <a href="#">Boston</a></li>
+                           
                         </ul>
                     </div>
                 </div>
     
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <div class="card-actions float-right">
-                            <div class="dropdown show">
-                                <a href="#" data-toggle="dropdown" data-display="static">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
-                                        <circle cx="12" cy="12" r="1"></circle>
-                                        <circle cx="19" cy="12" r="1"></circle>
-                                        <circle cx="5" cy="12" r="1"></circle>
-                                    </svg>
-                                </a>
-    
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                       
-                    </div>
-                  
-                </div>
+              
             </div>
             <div class="col-lg-1">
 
@@ -430,6 +495,17 @@ body{
                         {% for post in poste %}
                         <div class="media">
                             <div class="media-body">
+                                 
+                                    <div class="card-actions float-right">
+                                        <div class="select-wrapper">
+                                            <select class="form-control" onchange="location.href=this.value">
+                                                <option selected></option>
+                                                <option value="{% url 'modifier_post' pk=post.pk %}">Modifier</option>
+                                                <option value="{% url 'supprimer_post' post.pk %}">Supprimer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                               
                                 <p class="mb-2"><strong>{{ post.user.nom }}</strong></p>
                                 <p>{{ post.affichertype }}</p>
                                 <div class="row no-gutters mt-1">
@@ -443,31 +519,8 @@ body{
                                 </div>
                                 
                                 <small class="text-muted">{{ post.date }}</small>
-                                <a href="#" class="btn btn-sm btn-danger mt-1 like-btn" data-post-id="{{ post.id }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart feather-sm">
-                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                    </svg> 
-                                    <span class="like-count">{{ post.count_likes }}</span> Like
-                                </a>
-                                {% for rec in post.reactions.all %}
-                                <div class="media mt-3">
-                                    <a class="pr-2" href="#">
-                                        <img src="/static/images/ilef.png" width="36" height="36" class="rounded-circle mr-2" alt="Marie Salter">
-                                    </a>
-                                    <div class="media-body">
-                                        <p class="text-muted">
-                                            <strong>{{ rec.comment }}</strong>
-                                        </p>
-                                    </div>
-                                </div>
+                            
                               
-                                {% endfor %}
-                                <div class="card-footer">
-                                   
-                                    <a class="btn btn-info" href="{% url 'modifier_post' pk=post.pk %}">Modifier le poste</a>
-
-                                    <a class="btn btn-danger" href="{% url 'supprimer_post' post.pk %}">Supprimer le poste</a>
-                                </div>
             <!-- Lien pour créer un nouveau poste -->
 
 
@@ -486,14 +539,28 @@ body{
         </div>
     
 </body>
+<script>
+    function toggleOptions() {
+        var options = document.querySelector('.options');
+        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    }
+    
+    document.getElementById('select-button').addEventListener('click', toggleOptions);
+</script>
+<!-- Vous n'avez pas besoin de ces deux lignes, car vous avez déjà inclus la version 5.3.0-alpha1 de Bootstrap -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-vuFJQ5GGdSvpr6no9V+oYkwqTNZy9sQGpMXXnqzTq9RK8oQpX/bzXyJb+kzKCUfE" crossorigin="anonymous"></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js'></script> -->
 
-
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js'></script>
-<!-- Scripts -->
+<!-- Vous avez besoin de jQuery pour que Bootstrap fonctionne correctement -->
 <script src="{% static 'Studenthelp/vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Vous avez déjà inclus le fichier JavaScript de Bootstrap -->
+<!-- <script src="{% static 'Studenthelp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+
+<!-- Les autres scripts semblent spécifiques à votre application -->
 <script src="{% static 'Studenthelp/js/owl-carousel.js' %}"></script>
 <script src="{% static 'Studenthelp/js/animation.js' %}"></script>
 <script src="{% static 'Studenthelp/js/imagesloaded.js' %}"></script>
 <script src="{% static 'Studenthelp/js/custom.js' %}"></script>
+
 </html>

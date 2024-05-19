@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Posts</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://bootswatch.com/5/litera/bootstrap.min.css"
+    />
+    <style>
+        body {
+            background-color: #fff3e0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #ff9800;
+            box-sizing: border-box;
+        }
+        .post-category {
+            margin-top: 40px;
+            font-size: 24px;
+            color: #ff9800;
+        }
+        .post {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .post-details {
+            margin-top: 20px;
+        }
+        .post-footer {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .details-link, .creer-link {
+            background-color: #fa6a0b;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .details-link:hover, .creer-link:hover {
+            background-color: #e68900;
+        }
+        .text-titre {
+            text-align: center;
+            color: #ff9800;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 class="text-titre">All Posts</h1>
+    <div>
+        <a class="creer-link btn btn-primary" href="{% url 'accueil' %}">Retour Accueil</a>
+    </div>
+    <div class="container">
+        <!-- Stage Posts -->
+        <div class="post-category">Stage</div>
+        {% for stage in stages %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ stage.get_type_display }}</div>
+                <div><strong>Date:</strong> {{ stage.date }}</div>
+                <div><strong>User:</strong> {{ stage.user }}</div>
+                <div><strong>Type Stage:</strong> {{ stage.get_typestg_display }}</div>
+                <div><strong>Societe:</strong> {{ stage.societe }}</div>
+                <div><strong>Duree:</strong> {{ stage.duree }}</div>
+                <div><strong>Sujet:</strong> {{ stage.sujet }}</div>
+                <div><strong>Contact Info:</strong> {{ stage.contactinfo }}</div>
+                <div><strong>Specialite:</strong> {{ stage.specialite }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=stage.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Logement Posts -->
+        <div class="post-category">Logement</div>
+        {% for logement in logements %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ logement.get_type_display }}</div>
+                <div><strong>Date:</strong> {{ logement.date }}</div>
+                <div><strong>User:</strong> {{ logement.user }}</div>
+                <div><strong>Localisation:</strong> {{ logement.localisation }}</div>
+                <div><strong>Description:</strong> {{ logement.description }}</div>
+                <div><strong>Contact Info:</strong> {{ logement.contactinfo }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=logement.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Transport Posts -->
+        <div class="post-category">Transport</div>
+        {% for transport in transports %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ transport.get_type_display }}</div>
+                <div><strong>Date:</strong> {{ transport.date }}</div>
+                <div><strong>User:</strong> {{ transport.user }}</div>
+                <div><strong>Depart:</strong> {{ transport.depart }}</div>
+                <div><strong>Destination:</strong> {{ transport.destination }}</div>
+                <div><strong>Heure de Depart:</strong> {{ transport.heuredep }}</div>
+                <div><strong>Nombre de Sieges:</strong> {{ transport.nbsiege }}</div>
+                <div><strong>Contact Info:</strong> {{ transport.contactinfo }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=transport.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Evenement Social Posts -->
+        <div class="post-category">Evenement Social</div>
+        {% for es in evenementsoc %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ es.get_type_display }}</div>
+                <div><strong>Intitule:</strong> {{ es.intitule }}</div>
+                <div><strong>Description:</strong> {{ es.description }}</div>
+                <div><strong>Lieu:</strong> {{ es.lieu }}</div>
+                <div><strong>Prix:</strong> {{ es.prix }}</div>
+                <div><strong>Contact Info:</strong> {{ es.contactinfo }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=es.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Evenement Club Posts -->
+        <div class="post-category">Evenement Club</div>
+        {% for ec in evenementclub %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ ec.get_type_display }}</div>
+                <div><strong>Intitule:</strong> {{ ec.intitule }}</div>
+                <div><strong>Description:</strong> {{ ec.description }}</div>
+                <div><strong>Lieu:</strong> {{ ec.lieu }}</div>
+                <div><strong>Club:</strong> {{ ec.club }}</div>
+                <div><strong>Contact Info:</strong> {{ ec.contactinfo }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=ec.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- Recommandation Posts -->
+        <div class="post-category">Recommandation</div>
+        {% for recommandation in recommandations %}
+        <div class="post">
+            <div class="post-details">
+                <div><strong>Type:</strong> {{ recommandation.get_type_display }}</div>
+                <div><strong>Date:</strong> {{ recommandation.date }}</div>
+                <div><strong>User:</strong> {{ recommandation.user }}</div>
+                <div><strong>Text:</strong> {{ recommandation.text }}</div>
+            </div>
+            <div class="post-footer">
+                <a class="details-link" href="{% url 'detail_post' pk=recommandation.pk %}">Voir les détails</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

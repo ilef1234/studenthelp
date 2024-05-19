@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix</title>
+    <style>
+        /* Style pour le corps de la page */
+        body {
+            font-family: Arial, sans-serif; /* Police de caractères par défaut */
+            background-color: #f4f4f4; /* Couleur de fond */
+            margin: 0; /* Supprime les marges par défaut */
+            padding: 0; /* Supprime les espacements internes par défaut */
+        }
+
+        /* Style pour le conteneur principal */
+        .container {
+            max-width: 800px; /* Largeur maximale du contenu */
+            margin: 0 auto; /* Centre le contenu horizontalement */
+            padding: 20px; /* Espacement interne */
+            text-align: center; /* Centre le texte */
+        }
+
+        /* Style pour le titre */
+        h1 {
+            font-size: 28px; /* Taille du titre */
+            color: #ff7f00; /* Couleur du texte orangee */
+            font-weight: bold; /* Texte en gras */
+            background: linear-gradient(to right, #ff7f00, #ffbf00); /* Dégradé orange */
+            -webkit-background-clip: text; /* Masquer le dégradé en dehors du texte */
+            -webkit-text-fill-color: transparent; /* Rendre le texte transparent */
+            margin-bottom: 20px; /* Espacement en dessous du titre */
+        }
+
+        /* Style pour les liens */
+        .link-container {
+            display: flex; /* Utilisation de flexbox pour la disposition des liens */
+            flex-wrap: wrap; /* Permettre le passage à la ligne automatique */
+            justify-content: center; /* Centrer les liens horizontalement */
+            margin-top: 20px; /* Espacement en haut des liens */
+        }
+
+      /* Style pour les liens */
+/* Style pour les liens */
+.link-container a {
+    text-decoration: none; /* Supprime les soulignements */
+    color: #333; /* Couleur du texte */
+    background-color: #ffffff; /* Couleur de fond blanche */
+    border: 3px solid #ff7f00; /* Bordure solide orangee */
+    padding: 20px; /* Espacement interne */
+    border-radius: 10px; /* Coins arrondis */
+    margin: 10px; /* Marge autour des liens */
+    transition: all 0.3s ease; /* Transition en douceur */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+    display: inline-block; /* Affiche en ligne avec les autres éléments */
+    width: 200px; /* Largeur fixe pour tous les liens */
+    height: 200px; /* Hauteur fixe pour tous les liens */
+    line-height: 200px; /* Centrer le contenu verticalement */
+}
+
+.link-container a:hover {
+    background-color: #ffcc80; /* Couleur de fond orange plus claire au survol */
+    color: #fff; /* Couleur du texte au survol */
+    transform: translateY(-3px); /* Déplacement vers le haut au survol */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4); /* Ombre plus prononcée au survol */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Titre centré -->
+        <h1>Formulaires pour les différentes classes de modèles</h1>
+
+        <!-- Liens vers les formulaires -->
+        <div class="link-container">
+            <a href="{% url 'user' %}"> Utilisateur</a>
+            <a href="{% url 'poste' %}"> Poste</a>
+            <a href="{% url 'evenement' %}"> Evenement</a>
+            <a href="{% url 'evenementclub' %}"> Evenement Club</a>
+            <a href="{% url 'evenementsoc' %}"> Evenement Social</a>
+            <a href="{% url 'stage' %}"> Stage</a>
+            <a href="{% url 'logement' %}"> Logement</a>
+            <a href="{% url 'transport' %}"> Transport</a>
+            <a href="{% url 'recommandation' %}"> Recommandation</a>
+        </div>
+    </div>
+</body>
+</html>
