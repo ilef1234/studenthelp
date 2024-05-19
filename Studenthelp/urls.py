@@ -27,8 +27,11 @@ urlpatterns = [
     path('supprimer_post/<int:pk>/', SupprimerPost.as_view(), name='supprimer_post'),
     path('choix/', views.choix, name="choix"),
     path('contact/', views.contact, name="contact"),
+<<<<<<< HEAD
     path('all-posts/', views.combined_view, name='combined_view'),
     path('post/<int:pk>/comment', Addcomment.as_view(), name='add_comment')
+=======
+>>>>>>> 97352b5c4aece25e2743880e8250770be030c37f
 ]
 
 # Définir l'URL pour les fichiers média en mode DEBUG

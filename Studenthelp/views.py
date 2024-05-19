@@ -307,6 +307,7 @@ class SupprimerPost(DeleteView):
 # class SupprimerPost(DeleteView):
 #     model = Poste
 #     template_name = 'supprimer_post.html'
+<<<<<<< HEAD
 
 #     # Redirection conditionnelle
 #     def get_success_url(self):
@@ -345,8 +346,18 @@ def combined_view(request):
     return render(request, 'combined_view.html', context)
 # from django.shortcuts import get_object_or_404
 # from django.contrib.auth.mixins import LoginRequiredMixin
+=======
+>>>>>>> 97352b5c4aece25e2743880e8250770be030c37f
 
+#     # Redirection conditionnelle
+#     def get_success_url(self):
+#         # Vérifie si la page précédente est le profil
+#         if self.request.META.get('HTTP_REFERER') == reverse_lazy('profil'):
+#             return reverse_lazy('profil')
+#         # Sinon, redirige vers l'accueil
+#         return reverse_lazy('accueil')
 
+<<<<<<< HEAD
 # from django.contrib.auth import get_user_model
 
 # User = get_user_model()
@@ -386,3 +397,10 @@ class Addcomment(CreateView):
 
     success_url = reverse_lazy('accueil')
 
+=======
+def choix(request):
+    return render(request, 'choix.html')
+def contact(request):
+    return render(request,'contact.html')
+    
+>>>>>>> 97352b5c4aece25e2743880e8250770be030c37f
