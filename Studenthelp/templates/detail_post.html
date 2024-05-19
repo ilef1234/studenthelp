@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Détails du poste</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            text-align: center;
-        }
-        .post-details {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .post-details p {
-            margin: 10px 0;
-        }
-        .post-details img {
-            display: block;
-            margin: 10px auto;
-            max-width: 300px;
-            height: auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Détails du poste</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://bootswatch.com/5/litera/bootstrap.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff3e0; /* Arrière-plan de la page en orange très clair */
+    }
+    .post-details {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour l'effet de profondeur */
+      border-top: 5px solid #ff9800; /* Bordure supérieure orange */
+      text-align: center;
+    }
+    h1 {
+      color: #ff9800; /* Titre de couleur orange */
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 10px 0;
+      color: #333;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-    <div class="post-details">
-        <h1>Détails du poste : {{ post.type }}</h1>
-        <p>date : {{ post.date }}</p>
-        <p>user : {{ post.user }}</p>
-        <img src="/media/{{ post.image }}" alt="Profile Pic" height="auto" width="100%" />
-        <button><a href="{% url 'modifier_post' post.pk %}">modifier</a></button>
-   <button><a href="{% url 'supprimer_post' post.pk %}">supprimer</a></button>
-    </div>
+  <div class="post-details">
+    <h1>Détails du poste : {{ post.affichertype }}</h1>
+    <p>Date : {{ post.date }}</p>
+    <p>Utilisateur : {{ post.user }}</p>
+    <img src="/media/{{ post.image }}" alt="Profile Pic" />
+  </div>
 </body>
 </html>

@@ -1,0 +1,59 @@
+{% block content %}
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://bootswatch.com/5/litera/bootstrap.min.css"
+  />
+  <style>
+    body {
+      background-color: #fff3e0;
+    }
+    .container {
+      width: 400px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid #ff9800;
+    }
+    h2 {
+      color: #ff9800;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #ff9800;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #e68900; 
+    }
+    .form-control {
+      border: 1px solid #ff9800;
+    }
+    label {
+      color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h2>Ajouter un commentaire</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Ajouter un commentaire</button>
+    </form>
+</div>
+</body>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import UserForm 
+from .forms import CommentForm, UserForm 
 from .forms import PosteForm  # Importez le formulaire UserForm
 from .forms import EvenementForm
 from .forms import EvenClubForm
@@ -9,7 +9,7 @@ from .forms import LogementForm
 from .forms import TransportForm
 from .forms import RecommandationForm
 from django.shortcuts import redirect
-from .models import Poste, Reaction, Stage, User
+from .models import Poste, Reaction, Stage, User , EvenClub,EvenSocial
 from .models import Evenement
 from .models import Transport
 from .models import Logement
@@ -17,7 +17,8 @@ from .models import Recommandation
 from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib import auth
+from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 # # Create your views here.
 # def login(request):
 #     return render(request,'login.html')
@@ -102,96 +103,98 @@ def poste(request):
         form = PosteForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = PosteForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majPoste.html', {'form': form})
+    return render(request, 'majPoste.html', {'form': form})
 def evenement(request):
     if request.method == "POST": 
         form = EvenementForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = EvenementForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvenement.html', {'form': form})
+    return render(request, 'majEvenement.html', {'form': form})
 def evenementclub(request):
     if request.method == "POST": 
         form = EvenClubForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = EvenClubForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvenclub.html', {'form': form})
+    return render(request, 'majEvenclub.html', {'form': form})
 def evenementsoc(request):
     if request.method == "POST": 
         form = EvenSocialForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = EvenSocialForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majEvensoc.html', {'form': form})
+    return render(request, 'majEvensoc.html', {'form': form})
 def stage(request):
     if request.method == "POST": 
         form = StageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = StageForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majStage.html', {'form': form})
+    return render(request, 'majStage.html', {'form': form})
 def logement(request):
     if request.method == "POST": 
         form = LogementForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = LogementForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majLog.html', {'form': form})
+    return render(request, 'majLog.html', {'form': form})
 def transport(request):
     if request.method == "POST": 
         form = TransportForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = TransportForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majTransp.html', {'form': form})
+    return render(request, 'majTransp.html', {'form': form})
 
 def recommandation(request):
     if request.method == "POST": 
         form = RecommandationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/Studenthelp')
+            return redirect('/Studenthelp/accueil/')
     else:
         form = RecommandationForm()  # Créer une instance du formulaire vide
 
     # Ajoutez le formulaire au contexte de la vue
-    return render(request, 'Studenthelp/majRec.html', {'form': form})
+    return render(request, 'majRec.html', {'form': form})
 
 def accueil(request):
-    postes = Poste.objects.all()
-    context = {'postes': postes}
-    return render(request, 'accueil.html', context)
-
+    if request.session.get('user_nom'):
+        postes = Poste.objects.order_by('-date')
+        context = {'postes': postes}
+        return render(request, 'accueil.html', context)
+    else:
+        return redirect('http://127.0.0.1:8000/Studenthelp/login/')
 
 #     items = []
 
@@ -233,13 +236,13 @@ def profil(request):
         user = User.objects.filter(nom=user_nom).first()
 
         context = {
-            'poste': Poste.objects.filter(user=user),  # Filtrer les publications de l'utilisateur connecté
+            'poste': Poste.objects.filter(user=user).order_by('-date'),  # Filtrer les publications de l'utilisateur connecté
             'reactions': Reaction.objects.all(),
             'user_nom': user_nom,
         }
         return render(request, 'profil.html', context)
     else:
-        return redirect('login')
+        return redirect('http://127.0.0.1:8000/Studenthelp/login/')
 
 # def home2(request):
 #     context = {
@@ -263,7 +266,9 @@ def profil(request):
 #         form = UserForm()
 #     return render(request,'profil0.html',{'form' : form})
 
-
+def logout_view(request): 
+  logout(request)
+  return redirect('/Studenthelp/')
 class ListePost(ListView):
     model = Poste
     template_name = 'liste_postes.html'
@@ -282,10 +287,102 @@ class ModifierPost(UpdateView):
     template_name = 'modifier_post.html'
     form_class = PosteForm 
     success_url = reverse_lazy('profil') 
+    # class ModifierPost(UpdateView):
+    # model = Poste
+    # template_name = 'modifier_post.html'
+    # form_class = PosteForm 
+
+    # # Redirection conditionnelle
+    # def get_success_url(self):
+    #     # Vérifie si la page précédente est le profil
+    #     if self.request.META.get('HTTP_REFERER') == reverse_lazy('profil'):
+    #         return reverse_lazy('profil')
+    #     # Sinon, redirige vers l'accueil
+    #     return reverse_lazy('accueil')
+
 class SupprimerPost(DeleteView):
     model = Poste
     template_name = 'supprimer_post.html'
     success_url = reverse_lazy('profil') 
+# class SupprimerPost(DeleteView):
+#     model = Poste
+#     template_name = 'supprimer_post.html'
+
+#     # Redirection conditionnelle
+#     def get_success_url(self):
+#         # Vérifie si la page précédente est le profil
+#         if self.request.META.get('HTTP_REFERER') == reverse_lazy('profil'):
+#             return reverse_lazy('profil')
+#         # Sinon, redirige vers l'accueil
+#         return reverse_lazy('accueil')
+
+def choix(request):
+    return render(request, 'choix.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+  
+
+def combined_view(request):
+    evenement= Evenement.objects.all()
+    stages = Stage.objects.all()
+    logements = Logement.objects.all()
+    transports = Transport.objects.all()
+    recommandations = Recommandation.objects.all
+    evenementsoc= EvenSocial.objects.all()
+    evenementclub=EvenClub.objects.all()
+
+    context = {
+        'evenement': evenement,
+        'stages': stages,
+        'logements': logements,
+        'transports': transports,
+        'recommandations': recommandations,
+        'evenementsoc':evenementsoc,
+        'evenementclub':evenementclub
+    }
+
+    return render(request, 'combined_view.html', context)
+# from django.shortcuts import get_object_or_404
+# from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-    
+# from django.contrib.auth import get_user_model
+
+# User = get_user_model()
+
+# class Addcomment(LoginRequiredMixin, CreateView):
+#     model = Reaction
+#     form_class = CommentForm
+#     template_name = 'Addcmn.html'
+
+#     def form_valid(self, form):
+#         try:
+#             username = self.request.session['user_nom']
+#             form.instance.user = username
+#             # Get the post object using the pk from the URL
+#             post_pk = self.kwargs['pk']
+#             post = get_object_or_404(Poste, pk=post_pk)
+#             # Set the poste field to the retrieved post object
+#             form.instance.poste = post
+#             return super().form_valid(form)
+#         except Exception as e:
+#             print("Error occurred:", e)
+#             return super().form_invalid(form)
+
+#     success_url = reverse_lazy('accueil')
+
+class Addcomment(CreateView):
+    model = Reaction
+    form_class = CommentForm
+    template_name = 'Addcmn.html'
+
+    def form_valid(self, form):
+        default_user = User.objects.get(nom='ilef')
+        form.instance.users = default_user
+        form.instance.post_id = self.kwargs.get('pk')
+        
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('accueil')
+

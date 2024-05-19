@@ -34,8 +34,7 @@
                 </div>
             </div>
             <div class="col-lg-5 align-self-center">
-              <form role="form" id="contact" method="Post">
-                <div class="row">
+                <form role="form" id="contact" method="POST" enctype="multipart/form-data">                <div class="row">
                         {% csrf_token %}
                         <div class="col-lg-12">
                             <fieldset>

@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Supprimer le poste : {{ post.title }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 50px;
-        }
-        form {
-            text-align: center;
-            margin-top: 30px;
-        }
-        button[type="submit"] {
-            padding: 10px 20px;
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button[type="submit"]:hover {
-            background-color: #c82333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Supprimer le poste : {{ post.title }}</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://bootswatch.com/5/litera/bootstrap.min.css"
+  />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff3e0; /* Arrière-plan de la page en orange très clair */
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto; /* Ajouter un espacement supérieur */
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour l'effet de profondeur */
+      border-top: 5px solid #ff9800; /* Bordure supérieure orange */
+      text-align: center;
+    }
+    h1 {
+      color: #ff9800; /* Titre de couleur orange */
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #dc3545; /* Bouton de suppression en rouge */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #c82333;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
     <h1>Êtes-vous sûr de vouloir supprimer ce poste ?</h1>
     <form method="post">
-        {% csrf_token %}
-        <button type="submit">Oui, supprimer</button>
+      {% csrf_token %}
+      <button type="submit">Oui, supprimer</button>
     </form>
+  </div>
 </body>
 </html>

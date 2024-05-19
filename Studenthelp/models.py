@@ -38,7 +38,7 @@ class Reaction(models.Model):
     comment=models.TextField(default='Non definie')
     like=models.BooleanField()
     user=models.ForeignKey('User',on_delete=models.CASCADE,null=True)
-    poste=models.ForeignKey('Poste',on_delete=models.CASCADE,null=True)
+    poste = models.ForeignKey(Poste, related_name="comments", on_delete=models.CASCADE,null=True)
     def __str__(self) :
         return str(self.comment) +" "+str(self.like)+" "+str(self.user)+" "+str(self.poste)
     
@@ -87,5 +87,4 @@ class Recommandation(Poste,models.Model):
     text=models.CharField(max_length=100)
     def __str__(self):
       return super().__str__() + str(self.text)
-
 

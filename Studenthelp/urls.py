@@ -1,7 +1,9 @@
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import ListePost, DetailPost, CreerPost, ModifierPost, SupprimerPost
+
+
+from .views import ListePost, DetailPost, CreerPost, ModifierPost, SupprimerPost , Addcomment
 from . import views
 
 urlpatterns = [
@@ -18,12 +20,15 @@ urlpatterns = [
     path('transport/', views.transport, name='transport'),
     path('recommandation/', views.recommandation, name='recommandation'),
     path('profil/', views.profil, name="profil"),
-    path('', ListePost.as_view(), name='liste_postes'),  # Utilisation des vues génériques basées sur les classes
+    path('',ListePost.as_view(), name='liste_postes'),  # Utilisation des vues génériques basées sur les classes
     path('detail_post/<int:pk>/', DetailPost.as_view(), name='detail_post'),
     path('creer_post/', CreerPost.as_view(), name='creer_post'),
-   path('modifier_post/<int:pk>/', ModifierPost.as_view(), name='modifier_post'),
-
+    path('modifier_post/<int:pk>/', ModifierPost.as_view(), name='modifier_post'),
     path('supprimer_post/<int:pk>/', SupprimerPost.as_view(), name='supprimer_post'),
+    path('choix/', views.choix, name="choix"),
+    path('contact/', views.contact, name="contact"),
+    path('all-posts/', views.combined_view, name='combined_view'),
+    path('post/<int:pk>/comment', Addcomment.as_view(), name='add_comment')
 ]
 
 # Définir l'URL pour les fichiers média en mode DEBUG
